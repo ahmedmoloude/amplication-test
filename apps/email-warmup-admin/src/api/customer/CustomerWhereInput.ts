@@ -1,10 +1,10 @@
-import { AddressWhereUniqueInput } from "../address/AddressWhereUniqueInput";
+import { AddressdsadsaWhereUniqueInput } from "../addressdsadsa/AddressdsadsaWhereUniqueInput";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { OrderListRelationFilter } from "../order/OrderListRelationFilter";
 
 export type CustomerWhereInput = {
-  address?: AddressWhereUniqueInput;
+  address?: AddressdsadsaWhereUniqueInput;
   email?: StringNullableFilter;
   firstName?: StringNullableFilter;
   id?: StringFilter;

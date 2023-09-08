@@ -32,19 +32,19 @@ model Order {
 }
 
 model Customer {
-  address   Address? @relation(fields: [addressId], references: [id])
+  address   Addressdsadsa? @relation(fields: [addressId], references: [id])
   addressId String?
-  createdAt DateTime @default(now())
+  createdAt DateTime       @default(now())
   email     String?
   firstName String?
-  id        String   @id @default(cuid())
+  id        String         @id @default(cuid())
   lastName  String?
   orders    Order[]
   phone     String?
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime       @updatedAt
 }
 
-model Address {
+model Addressdsadsa {
   address_1 String?
   address_2 String?
   city      String?
@@ -52,6 +52,7 @@ model Address {
   customers Customer[]
   id        String     @id @default(cuid())
   state     String?
+  tets      String     @unique
   updatedAt DateTime   @updatedAt
   zip       Int?
 }

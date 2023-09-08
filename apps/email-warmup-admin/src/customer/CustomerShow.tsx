@@ -13,14 +13,18 @@ import {
 
 import { CUSTOMER_TITLE_FIELD } from "./CustomerTitle";
 import { PRODUCT_TITLE_FIELD } from "../product/ProductTitle";
-import { ADDRESS_TITLE_FIELD } from "../address/AddressTitle";
+import { ADDRESSDSADSA_TITLE_FIELD } from "../addressdsadsa/AddressdsadsaTitle";
 
 export const CustomerShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <ReferenceField label="Address" source="address.id" reference="Address">
-          <TextField source={ADDRESS_TITLE_FIELD} />
+        <ReferenceField
+          label="Address"
+          source="addressdsadsa.id"
+          reference="Addressdsadsa"
+        >
+          <TextField source={ADDRESSDSADSA_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="createdAt" label="Created At" />
         <TextField label="Email" source="email" />

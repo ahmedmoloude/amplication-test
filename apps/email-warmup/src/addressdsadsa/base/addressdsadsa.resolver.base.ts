@@ -19,33 +19,32 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { CreateCustomerArgs } from "./CreateCustomerArgs";
-import { UpdateCustomerArgs } from "./UpdateCustomerArgs";
-import { DeleteCustomerArgs } from "./DeleteCustomerArgs";
-import { CustomerCountArgs } from "./CustomerCountArgs";
-import { CustomerFindManyArgs } from "./CustomerFindManyArgs";
-import { CustomerFindUniqueArgs } from "./CustomerFindUniqueArgs";
-import { Customer } from "./Customer";
-import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
-import { Order } from "../../order/base/Order";
-import { Addressdsadsa } from "../../addressdsadsa/base/Addressdsadsa";
-import { CustomerService } from "../customer.service";
+import { CreateAddressdsadsaArgs } from "./CreateAddressdsadsaArgs";
+import { UpdateAddressdsadsaArgs } from "./UpdateAddressdsadsaArgs";
+import { DeleteAddressdsadsaArgs } from "./DeleteAddressdsadsaArgs";
+import { AddressdsadsaCountArgs } from "./AddressdsadsaCountArgs";
+import { AddressdsadsaFindManyArgs } from "./AddressdsadsaFindManyArgs";
+import { AddressdsadsaFindUniqueArgs } from "./AddressdsadsaFindUniqueArgs";
+import { Addressdsadsa } from "./Addressdsadsa";
+import { CustomerFindManyArgs } from "../../customer/base/CustomerFindManyArgs";
+import { Customer } from "../../customer/base/Customer";
+import { AddressdsadsaService } from "../addressdsadsa.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
-@graphql.Resolver(() => Customer)
-export class CustomerResolverBase {
+@graphql.Resolver(() => Addressdsadsa)
+export class AddressdsadsaResolverBase {
   constructor(
-    protected readonly service: CustomerService,
+    protected readonly service: AddressdsadsaService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
   @graphql.Query(() => MetaQueryPayload)
   @nestAccessControl.UseRoles({
-    resource: "Customer",
+    resource: "Addressdsadsa",
     action: "read",
     possession: "any",
   })
-  async _customersMeta(
-    @graphql.Args() args: CustomerCountArgs
+  async _addressdsadsasMeta(
+    @graphql.Args() args: AddressdsadsaCountArgs
   ): Promise<MetaQueryPayload> {
     const result = await this.service.count(args);
     return {
@@ -54,28 +53,28 @@ export class CustomerResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => [Customer])
+  @graphql.Query(() => [Addressdsadsa])
   @nestAccessControl.UseRoles({
-    resource: "Customer",
+    resource: "Addressdsadsa",
     action: "read",
     possession: "any",
   })
-  async customers(
-    @graphql.Args() args: CustomerFindManyArgs
-  ): Promise<Customer[]> {
+  async addressdsadsas(
+    @graphql.Args() args: AddressdsadsaFindManyArgs
+  ): Promise<Addressdsadsa[]> {
     return this.service.findMany(args);
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => Customer, { nullable: true })
+  @graphql.Query(() => Addressdsadsa, { nullable: true })
   @nestAccessControl.UseRoles({
-    resource: "Customer",
+    resource: "Addressdsadsa",
     action: "read",
     possession: "own",
   })
-  async customer(
-    @graphql.Args() args: CustomerFindUniqueArgs
-  ): Promise<Customer | null> {
+  async addressdsadsa(
+    @graphql.Args() args: AddressdsadsaFindUniqueArgs
+  ): Promise<Addressdsadsa | null> {
     const result = await this.service.findOne(args);
     if (result === null) {
       return null;
@@ -84,51 +83,35 @@ export class CustomerResolverBase {
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
-  @graphql.Mutation(() => Customer)
+  @graphql.Mutation(() => Addressdsadsa)
   @nestAccessControl.UseRoles({
-    resource: "Customer",
+    resource: "Addressdsadsa",
     action: "create",
     possession: "any",
   })
-  async createCustomer(
-    @graphql.Args() args: CreateCustomerArgs
-  ): Promise<Customer> {
+  async createAddressdsadsa(
+    @graphql.Args() args: CreateAddressdsadsaArgs
+  ): Promise<Addressdsadsa> {
     return await this.service.create({
       ...args,
-      data: {
-        ...args.data,
-
-        address: args.data.address
-          ? {
-              connect: args.data.address,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
-  @graphql.Mutation(() => Customer)
+  @graphql.Mutation(() => Addressdsadsa)
   @nestAccessControl.UseRoles({
-    resource: "Customer",
+    resource: "Addressdsadsa",
     action: "update",
     possession: "any",
   })
-  async updateCustomer(
-    @graphql.Args() args: UpdateCustomerArgs
-  ): Promise<Customer | null> {
+  async updateAddressdsadsa(
+    @graphql.Args() args: UpdateAddressdsadsaArgs
+  ): Promise<Addressdsadsa | null> {
     try {
       return await this.service.update({
         ...args,
-        data: {
-          ...args.data,
-
-          address: args.data.address
-            ? {
-                connect: args.data.address,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -140,15 +123,15 @@ export class CustomerResolverBase {
     }
   }
 
-  @graphql.Mutation(() => Customer)
+  @graphql.Mutation(() => Addressdsadsa)
   @nestAccessControl.UseRoles({
-    resource: "Customer",
+    resource: "Addressdsadsa",
     action: "delete",
     possession: "any",
   })
-  async deleteCustomer(
-    @graphql.Args() args: DeleteCustomerArgs
-  ): Promise<Customer | null> {
+  async deleteAddressdsadsa(
+    @graphql.Args() args: DeleteAddressdsadsaArgs
+  ): Promise<Addressdsadsa | null> {
     try {
       return await this.service.delete(args);
     } catch (error) {
@@ -162,43 +145,22 @@ export class CustomerResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Order], { name: "orders" })
+  @graphql.ResolveField(() => [Customer], { name: "customers" })
   @nestAccessControl.UseRoles({
-    resource: "Order",
+    resource: "Customer",
     action: "read",
     possession: "any",
   })
-  async resolveFieldOrders(
-    @graphql.Parent() parent: Customer,
-    @graphql.Args() args: OrderFindManyArgs
-  ): Promise<Order[]> {
-    const results = await this.service.findOrders(parent.id, args);
+  async resolveFieldCustomers(
+    @graphql.Parent() parent: Addressdsadsa,
+    @graphql.Args() args: CustomerFindManyArgs
+  ): Promise<Customer[]> {
+    const results = await this.service.findCustomers(parent.id, args);
 
     if (!results) {
       return [];
     }
 
     return results;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Addressdsadsa, {
-    nullable: true,
-    name: "address",
-  })
-  @nestAccessControl.UseRoles({
-    resource: "Addressdsadsa",
-    action: "read",
-    possession: "any",
-  })
-  async resolveFieldAddress(
-    @graphql.Parent() parent: Customer
-  ): Promise<Addressdsadsa | null> {
-    const result = await this.service.getAddress(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

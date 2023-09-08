@@ -1,8 +1,8 @@
-import { Address } from "../address/Address";
+import { Addressdsadsa } from "../addressdsadsa/Addressdsadsa";
 import { Order } from "../order/Order";
 
 export type Customer = {
-  address?: Address | null;
+  address?: Addressdsadsa | null;
   createdAt: Date;
   email: string | null;
   firstName: string | null;

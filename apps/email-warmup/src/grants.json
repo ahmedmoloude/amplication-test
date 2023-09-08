@@ -91,31 +91,31 @@
   },
   {
     "role": "user",
-    "resource": "Address",
+    "resource": "Addressdsadsa",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Address",
+    "resource": "Addressdsadsa",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Address",
+    "resource": "Addressdsadsa",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Address",
+    "resource": "Addressdsadsa",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Address",
+    "resource": "Addressdsadsa",
     "action": "read:any",
     "attributes": "*"
   },

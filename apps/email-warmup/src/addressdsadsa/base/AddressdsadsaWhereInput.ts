@@ -11,48 +11,59 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AddressdsadsaWhereUniqueInput } from "../../addressdsadsa/base/AddressdsadsaWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
+import { CustomerListRelationFilter } from "../../customer/base/CustomerListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 @InputType()
-class CustomerWhereInput {
+class AddressdsadsaWhereInput {
   @ApiProperty({
     required: false,
-    type: () => AddressdsadsaWhereUniqueInput,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  address_1?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  address_2?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  city?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => CustomerListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => AddressdsadsaWhereUniqueInput)
+  @Type(() => CustomerListRelationFilter)
   @IsOptional()
-  @Field(() => AddressdsadsaWhereUniqueInput, {
+  @Field(() => CustomerListRelationFilter, {
     nullable: true,
   })
-  address?: AddressdsadsaWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  email?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  firstName?: StringNullableFilter;
+  customers?: CustomerListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -74,30 +85,29 @@ class CustomerWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  lastName?: StringNullableFilter;
+  state?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: () => OrderListRelationFilter,
+    type: StringFilter,
   })
-  @ValidateNested()
-  @Type(() => OrderListRelationFilter)
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => OrderListRelationFilter, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  orders?: OrderListRelationFilter;
+  tets?: StringFilter;
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => StringNullableFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  phone?: StringNullableFilter;
+  zip?: IntNullableFilter;
 }
 
-export { CustomerWhereInput as CustomerWhereInput };
+export { AddressdsadsaWhereInput as AddressdsadsaWhereInput };

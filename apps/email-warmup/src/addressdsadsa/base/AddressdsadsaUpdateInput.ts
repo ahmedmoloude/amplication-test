@@ -11,24 +11,56 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AddressdsadsaWhereUniqueInput } from "../../addressdsadsa/base/AddressdsadsaWhereUniqueInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { IsString, IsOptional, ValidateNested, IsInt } from "class-validator";
+import { CustomerUpdateManyWithoutAddressdsadsasInput } from "./CustomerUpdateManyWithoutAddressdsadsasInput";
 import { Type } from "class-transformer";
-import { OrderUpdateManyWithoutCustomersInput } from "./OrderUpdateManyWithoutCustomersInput";
 
 @InputType()
-class CustomerUpdateInput {
+class AddressdsadsaUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => AddressdsadsaWhereUniqueInput,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  address_1?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  address_2?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  city?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CustomerUpdateManyWithoutAddressdsadsasInput,
   })
   @ValidateNested()
-  @Type(() => AddressdsadsaWhereUniqueInput)
+  @Type(() => CustomerUpdateManyWithoutAddressdsadsasInput)
   @IsOptional()
-  @Field(() => AddressdsadsaWhereUniqueInput, {
+  @Field(() => CustomerUpdateManyWithoutAddressdsadsasInput, {
     nullable: true,
   })
-  address?: AddressdsadsaWhereUniqueInput | null;
+  customers?: CustomerUpdateManyWithoutAddressdsadsasInput;
 
   @ApiProperty({
     required: false,
@@ -39,7 +71,7 @@ class CustomerUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  email?: string | null;
+  state?: string | null;
 
   @ApiProperty({
     required: false,
@@ -50,41 +82,18 @@ class CustomerUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  firstName?: string | null;
+  tets?: string;
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: Number,
   })
-  @IsString()
+  @IsInt()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Number, {
     nullable: true,
   })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrderUpdateManyWithoutCustomersInput,
-  })
-  @ValidateNested()
-  @Type(() => OrderUpdateManyWithoutCustomersInput)
-  @IsOptional()
-  @Field(() => OrderUpdateManyWithoutCustomersInput, {
-    nullable: true,
-  })
-  orders?: OrderUpdateManyWithoutCustomersInput;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  zip?: number | null;
 }
 
-export { CustomerUpdateInput as CustomerUpdateInput };
+export { AddressdsadsaUpdateInput as AddressdsadsaUpdateInput };

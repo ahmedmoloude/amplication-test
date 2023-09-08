@@ -1,8 +1,8 @@
-import { AddressWhereUniqueInput } from "../address/AddressWhereUniqueInput";
+import { AddressdsadsaWhereUniqueInput } from "../addressdsadsa/AddressdsadsaWhereUniqueInput";
 import { OrderUpdateManyWithoutCustomersInput } from "./OrderUpdateManyWithoutCustomersInput";
 
 export type CustomerUpdateInput = {
-  address?: AddressWhereUniqueInput | null;
+  address?: AddressdsadsaWhereUniqueInput | null;
   email?: string | null;
   firstName?: string | null;
   lastName?: string | null;
